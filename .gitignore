@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+mongodb://saudvijaysingh:YUhMbdDfTVAyozEK@<hostname>/?ssl=true&replicaSet=atlas-r2o0dw-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0
