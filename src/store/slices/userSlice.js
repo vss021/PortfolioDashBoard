@@ -115,7 +115,8 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       "https://portfolio-backend-wptf.onrender.com/api/v1/user/login",
       { email, password },
-      { withCredentials: true, headers: { "Content-Type": "application/json" } }
+      { withCredentials: true,
+         headers: { "Content-Type": "application/json" } }
     );
     dispatch(userSlice.actions.loginSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());

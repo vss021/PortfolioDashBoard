@@ -22,6 +22,7 @@ import ViewProject from "./pages/ViewProject";
 
 function App() {
   const dispatch = useDispatch();
+
   const {isAuthenticated} = useSelector((state) => state.user);
 
 
@@ -36,7 +37,7 @@ function App() {
       dispatch(getAllMessages());
       dispatch(getAllProjects());
     }
-  }, []);
+  }, [isAuthenticated]);
   return (
     <Router>
       <Routes>
