@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import ManageSkills from "./pages/ManageSkills";
 import ManageProjects from "./pages/ManageProjects";
 import UpdateProject from "./pages/UpdateProject";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUser } from "./store/slices/userSlice";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -22,14 +22,20 @@ import ViewProject from "./pages/ViewProject";
 
 function App() {
   const dispatch = useDispatch();
+  const {isAuthenticated} = useSelector((state) => state.user);
+
 
   useEffect(() => {
-    dispatch(getUser());
-    dispatch(getAllSkills());
-    dispatch(getAllSoftwareApplications());
-    dispatch(getAllTimeline());
-    dispatch(getAllMessages());
-    dispatch(getAllProjects());
+
+    if(isAuthenticated){
+
+      dispatch(getUser());
+      dispatch(getAllSkills());
+      dispatch(getAllSoftwareApplications());
+      dispatch(getAllTimeline());
+      dispatch(getAllMessages());
+      dispatch(getAllProjects());
+    }
   }, []);
   return (
     <Router>
