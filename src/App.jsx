@@ -23,12 +23,9 @@ import ViewProject from "./pages/ViewProject";
 function App() {
   const dispatch = useDispatch();
 
-  const {isAuthenticated} = useSelector((state) => state.user);
 
 
   useEffect(() => {
-
-    if(isAuthenticated){
 
       dispatch(getUser());
       dispatch(getAllSkills());
@@ -36,8 +33,8 @@ function App() {
       dispatch(getAllTimeline());
       dispatch(getAllMessages());
       dispatch(getAllProjects());
-    }
-  }, [isAuthenticated]);
+  }, []);
+  
   return (
     <Router>
       <Routes>
