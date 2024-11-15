@@ -31,7 +31,10 @@ import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
 
+
+
 const HomePage = () => {
+
   const [active, setActive] = useState("");
   const { isAuthenticated, error, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -48,6 +51,7 @@ const HomePage = () => {
     if (!isAuthenticated) {
       navigateTo("/login");
     }
+
   }, [isAuthenticated]);
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">

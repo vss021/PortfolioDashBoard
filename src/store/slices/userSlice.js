@@ -110,6 +110,7 @@ const userSlice = createSlice({
 });
 
 export const login = (email, password) => async (dispatch) => {
+
   dispatch(userSlice.actions.loginRequest());
   try {
     const { data } = await axios.post(
@@ -127,6 +128,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
+  
   try {
     const { data } = await axios.get("https://portfolio-backend-wptf.onrender.com/api/v1/user/me", {
       withCredentials: true,

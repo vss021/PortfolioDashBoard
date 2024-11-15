@@ -83,7 +83,7 @@ const Login = () => {
         </div>
       </div>
       <div className="flex justify-center items-center bg-muted">
-        <img src="https://unsplash.com/photos/a-computer-keyboard-sitting-on-top-of-a-wooden-desk-Wyc7vHXfCDQ" alt="login" />
+        <img src="/logo.png" alt="login" />
       </div>
     </div>
   );

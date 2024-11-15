@@ -93,6 +93,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
 };
 
 export const addNewSoftwareApplication = (data) => async (dispatch) => {
+
   dispatch(
     softwareApplicationSlice.actions.addNewsoftwareApplicationsRequest()
   );
@@ -105,6 +106,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
+
     dispatch(
       softwareApplicationSlice.actions.addNewsoftwareApplicationsSuccess(
         response.data.message

@@ -7,39 +7,43 @@ import HomePage from "./pages/HomePage";
 import ManageSkills from "./pages/ManageSkills";
 import ManageProjects from "./pages/ManageProjects";
 import UpdateProject from "./pages/UpdateProject";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getUser } from "./store/slices/userSlice";
-import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import { getAllSkills } from "./store/slices/skillSlice";
-import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
-import { getAllTimeline } from "./store/slices/timelineSlice";
-import { getAllMessages } from "./store/slices/messageSlice";
+import ForgotPassword from "./pages/ForgotPassword";
 import ManageTimeline from "./pages/ManageTimeline";
-import { getAllProjects } from "./store/slices/projectSlice";
 import ViewProject from "./pages/ViewProject";
 
+
+import { useEffect } from "react";
+import { getUser } from "@/store/slices/userSlice";
+import { getAllSkills } from "@/store/slices/skillSlice";
+import { getAllSoftwareApplications } from "@/store/slices/softwareApplicationSlice";
+import { getAllTimeline } from "@/store/slices/timelineSlice";
+import { getAllMessages } from "@/store/slices/messageSlice";
+import { getAllProjects } from "@/store/slices/projectSlice";
+import { useDispatch} from "react-redux";
+
 function App() {
+
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
+    // Fetch data only if the user is authenticated and after getting the user data
 
-      dispatch(getUser());
-      dispatch(getAllSkills());
-      dispatch(getAllSoftwareApplications());
-      dispatch(getAllTimeline());
-      dispatch(getAllMessages());
-      dispatch(getAllProjects());
+    dispatch(getAllSkills());
+    dispatch(getAllSoftwareApplications());
+    dispatch(getAllTimeline());
+    dispatch(getAllMessages());
+    dispatch(getAllProjects());
+
   }, []);
-  
+
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/" element={<HomePage />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/manage/skills" element={<ManageSkills />} />

@@ -74,6 +74,7 @@ const Dashboard = () => {
   };
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
     if (skillError) {
       toast.error(skillError);
