@@ -74,7 +74,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      "https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/getall",
+      "http://localhost:4000https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/getall",
       { withCredentials: true }
     );
     dispatch(
@@ -99,7 +99,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
   );
   try {
     const response = await axios.post(
-      "https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/add",
+      "http://localhost:4000https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/add",
       data,
       {
         withCredentials: true,
@@ -128,7 +128,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/delete/${id}`,
+      `http://localhost:4000https://portfolio-backend-wptf.onrender.com/api/v1/softwareapplication/delete/${id}`,
       {
         withCredentials: true,
       }
