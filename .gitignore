@@ -23,4 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+email => vijaysingh845490@gmail.com
+pass => vijay2002
 mongodb://saudvijaysingh:YUhMbdDfTVAyozEK@<hostname>/?ssl=true&replicaSet=atlas-r2o0dw-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0

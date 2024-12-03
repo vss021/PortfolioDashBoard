@@ -13,30 +13,9 @@ import ManageTimeline from "./pages/ManageTimeline";
 import ViewProject from "./pages/ViewProject";
 
 
-import { useEffect } from "react";
-import { getUser } from "@/store/slices/userSlice";
-import { getAllSkills } from "@/store/slices/skillSlice";
-import { getAllSoftwareApplications } from "@/store/slices/softwareApplicationSlice";
-import { getAllTimeline } from "@/store/slices/timelineSlice";
-import { getAllMessages } from "@/store/slices/messageSlice";
-import { getAllProjects } from "@/store/slices/projectSlice";
-import { useDispatch} from "react-redux";
+
 
 function App() {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Fetch data only if the user is authenticated and after getting the user data
-
-    dispatch(getAllSkills());
-    dispatch(getAllSoftwareApplications());
-    dispatch(getAllTimeline());
-    dispatch(getAllMessages());
-    dispatch(getAllProjects());
-
-  }, []);
-
 
   return (
     <Router>

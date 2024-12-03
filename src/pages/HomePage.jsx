@@ -30,6 +30,12 @@ import { logout } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
+import { getAllSkills } from "@/store/slices/skillSlice";
+import { getAllSoftwareApplications } from "@/store/slices/softwareApplicationSlice";
+import { getAllTimeline } from "@/store/slices/timelineSlice";
+import { getAllMessages } from "@/store/slices/messageSlice";
+import { getAllProjects } from "@/store/slices/projectSlice";
+
 
 
 
@@ -42,17 +48,34 @@ const HomePage = () => {
     dispatch(logout());
     toast.success("Logged Out!");
   };
+
+
+    
+
+
   const navigateTo = useNavigate();
+
+  if(isAuthenticated){
+    dispatch(getAllSkills());
+    dispatch(getAllSoftwareApplications());
+    dispatch(getAllTimeline());
+    dispatch(getAllMessages());
+    dispatch(getAllProjects());
+  }
+  
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearAllUserErrors());
     }
+
     if (!isAuthenticated) {
       navigateTo("/login");
     }
 
   }, [isAuthenticated]);
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
