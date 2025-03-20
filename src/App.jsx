@@ -30,6 +30,7 @@ function App() {
         <Route path="/manage/projects" element={<ManageProjects />} />
         <Route path="/view/project/:id" element={<ViewProject />} />
         <Route path="/update/project/:id" element={<UpdateProject />} />
+        
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
     </Router>

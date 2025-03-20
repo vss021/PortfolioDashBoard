@@ -87,7 +87,7 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      "https://portfolio-backend-p9yq.onrender.com/api/v1/skill/getall",
+      "https://portfolio-backend-gc3w.onrender.com/api/v1/skill/getall",
       { withCredentials: true }
     );
     dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
@@ -103,15 +103,15 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "https://portfolio-backend-p9yq.onrender.com/api/v1/skill/add",
+      "https://portfolio-backend-gc3w.onrender.com/api/v1/skill/add",
       data,
       {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(response);
-    console.log(response.data.message);
+    //console.log(response);
+    //console.log(response.data.message);
     dispatch(skillSlice.actions.addNewSkillSuccess(response.data.message));
     dispatch(skillSlice.actions.clearAllErrors());
   } catch (error) {
@@ -123,7 +123,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `https://portfolio-backend-p9yq.onrender.com/api/v1/skill/update/${id}`,
+      `https://portfolio-backend-gc3w.onrender.com/api/v1/skill/update/${id}`,
       { proficiency },
       {
         withCredentials: true,
@@ -141,7 +141,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `https://portfolio-backend-p9yq.onrender.com/api/v1/skill/delete/${id}`,
+      `https://portfolio-backend-gc3w.onrender.com/api/v1/skill/delete/${id}`,
       {
         withCredentials: true,
       }

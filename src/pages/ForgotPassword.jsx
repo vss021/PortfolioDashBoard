@@ -11,9 +11,13 @@ import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+
   const { loading, error, message } = useSelector(
     (state) => state.forgotPassword
   );
+
+  // //console.log(email, loading, error, message);
+
   const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigateTo = useNavigate();

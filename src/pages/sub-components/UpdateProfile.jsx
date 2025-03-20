@@ -24,6 +24,8 @@ const UpdateProfile = () => {
   const [phone, setPhone] = useState(user && user.phone);
   const [aboutMe, setAboutMe] = useState(user && user.aboutMe);
   const [portfolioURL, setPortfolioURL] = useState(user && user.portfolioURL);
+
+
   const [linkedInURL, setLinkedInURL] = useState(
     user && (user.linkedInURL === "undefined" ? "" : user.linkedInURL)
   );
@@ -40,6 +42,7 @@ const UpdateProfile = () => {
     user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
   );
   const [avatar, setAvatar] = useState(user && user.avatar && user.avatar.url);
+  
   const [avatarPreview, setAvatarPreview] = useState(
     user && user.avatar && user.avatar.url
   );

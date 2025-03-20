@@ -3,11 +3,13 @@ import axios from "axios";
 
 const forgotResetPassSlice = createSlice({
   name: "forgotPassword",
+
   initialState: {
     loading: false,
     error: null,
     message: null,
   },
+
   reducers: {
     forgotPasswordRequest(state, action) {
       state.loading = true;
@@ -49,21 +51,21 @@ const forgotResetPassSlice = createSlice({
 export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
-    console.log(email);
+    //console.log(email);
     const response = await axios.post(
-      "https://portfolio-backend-p9yq.onrender.com/api/v1/user/password/forgot",
+      "https://portfolio-backend-gc3w.onrender.com/api/v1/user/password/forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
-    console.log(response);
+    //console.log(response);
     dispatch(
-      forgotResetPassSlice.actions.forgotPasswordSuccess(response.data.message)
+      forgotResetPassSlice.actions.forgotPasswordSuccess(response?.data?.message)
     );
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     dispatch(
       forgotResetPassSlice.actions.forgotPasswordFailed(
-        error.response.data.message
+        error?.response?.data?.message
       )
     );
   }
@@ -74,19 +76,19 @@ export const resetPassword =
     try {
       dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
       const response = await axios.put(
-        ` https://portfolio-backend-p9yq.onrender.com/api/v1/user/password/reset/${token}`,
+        ` https://portfolio-backend-gc3w.onrender.com/api/v1/user/password/reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response);
+      // //console.log(response);
       dispatch(
         forgotResetPassSlice.actions.resetPasswordSuccess(response.data.message)
       );
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       dispatch(
         forgotResetPassSlice.actions.resetPasswordFailed(
           error.response.data.message

@@ -42,8 +42,10 @@ import { getAllProjects } from "@/store/slices/projectSlice";
 const HomePage = () => {
 
   const [active, setActive] = useState("");
+
   const { isAuthenticated, error, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  
   const handleLogout = () => {
     dispatch(logout());
     toast.success("Logged Out!");
