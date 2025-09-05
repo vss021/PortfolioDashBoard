@@ -11,7 +11,7 @@ const projectSlice = createSlice({
     singleProject: {},
   },
   reducers: {
-    getAllProjectsRequest(state, action) {
+    getAllProjectsRequest(state) {
       state.projects = [];
       state.error = null;
       state.loading = true;
@@ -22,11 +22,10 @@ const projectSlice = createSlice({
       state.loading = false;
     },
     getAllProjectsFailed(state, action) {
-      state.projects = state.projects;
       state.error = action.payload;
       state.loading = false;
     },
-    addNewProjectRequest(state, action) {
+    addNewProjectRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -41,7 +40,7 @@ const projectSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    deleteProjectRequest(state, action) {
+    deleteProjectRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -56,7 +55,7 @@ const projectSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    updateProjectRequest(state, action) {
+    updateProjectRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -71,15 +70,13 @@ const projectSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetProjectSlice(state, action) {
+    resetProjectSlice(state) {
       state.error = null;
-      state.projects = state.projects;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state = state.projects;
     },
   },
 });

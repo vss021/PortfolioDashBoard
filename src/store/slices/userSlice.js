@@ -12,7 +12,7 @@ const userSlice = createSlice({
     isUpdated: false,
   },
   reducers: {
-    loginRequest(state, action) {
+    loginRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -39,11 +39,9 @@ const userSlice = createSlice({
     },
     logoutFailed(state, action) {
       state.loading = false;
-      state.isAuthenticated = state.isAuthenticated;
-      state.user = state.user;
       state.error = action.payload;
     },
-    loadUserRequest(state, action) {
+    loadUserRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -62,7 +60,7 @@ const userSlice = createSlice({
       state.user = {};
       state.error = action.payload;
     },
-    updatePasswordRequest(state, action) {
+    updatePasswordRequest(state) {
       state.loading = true;
       state.isUpdated = false;
       state.message = null;
@@ -80,7 +78,7 @@ const userSlice = createSlice({
       state.message = null;
       state.error = action.payload;
     },
-    updateProfileRequest(state, action) {
+    updateProfileRequest(state) {
       state.loading = true;
       state.isUpdated = false;
       state.message = null;
@@ -98,15 +96,14 @@ const userSlice = createSlice({
       state.message = null;
       state.error = action.payload;
     },
-    updateProfileResetAfterUpdate(state, action) {
+    updateProfileResetAfterUpdate(state) {
       state.error = null;
       state.isUpdated = false;
       state.message = null;
     },
     
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state = state.user;
     },
   },
 });
@@ -195,6 +192,7 @@ export const updateProfile = (data) => async (dispatch) => {
     );
   }
 };
+
 export const resetProfile = () => (dispatch) => {
   dispatch(userSlice.actions.updateProfileResetAfterUpdate());
 };

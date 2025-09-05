@@ -11,7 +11,7 @@ const forgotResetPassSlice = createSlice({
   },
 
   reducers: {
-    forgotPasswordRequest(state, action) {
+    forgotPasswordRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -26,7 +26,7 @@ const forgotResetPassSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
-    resetPasswordRequest(state, action) {
+    resetPasswordRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -41,9 +41,10 @@ const forgotResetPassSlice = createSlice({
       state.error = action.payload;
       state.message = null;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state = state;
+      state.message = null;
+      state.loading = false;
     },
   },
 });
@@ -53,7 +54,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     //console.log(email);
     const response = await axios.post(
-      "https://portfolio-backend-gc3w.onrender.com/api/v1/user/password/forgot",
+      "https://portfolio-backend-gc3w.onrender.com/api/v1/user/password-forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -76,7 +77,7 @@ export const resetPassword =
     try {
       dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
       const response = await axios.put(
-        ` https://portfolio-backend-gc3w.onrender.com/api/v1/user/password/reset/${token}`,
+        ` https://portfolio-backend-gc3w.onrender.com/api/v1/user/password-reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,

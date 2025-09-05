@@ -26,7 +26,7 @@ import AddProject from "./sub-components/AddProject";
 import AddSoftwareApplications from "./sub-components/AddSoftwareApplications";
 import Account from "./sub-components/Account";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "@/store/slices/userSlice";
+import { logout, clearAllUserErrors } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
@@ -351,34 +351,16 @@ const HomePage = () => {
           </h1>
         </div>
       </header>
-      {(() => {
-        switch (active) {
-          case "Dashboard":
-            return <Dashboard />;
-            break;
-          case "Add Project":
-            return <AddProject />;
-            break;
-          case "Add Skill":
-            return <AddSkill />;
-            break;
-          case "Add Uses":
-            return <AddSoftwareApplications />;
-            break;
-          case "Add Timeline":
-            return <AddTimeline />;
-            break;
-          case "Messages":
-            return <Messages />;
-            break;
-          case "Account":
-            return <Account />;
-            break;
-          default:
-            return <Dashboard />;
-            break;
-        }
-      })()}
+      <main className="flex-1 p-6">
+        {/* Simplified component rendering */}
+        {active === "Add Project" && <AddProject />}
+        {active === "Add Skill" && <AddSkill />}
+        {active === "Add Uses" && <AddSoftwareApplications />}
+        {active === "Add Timeline" && <AddTimeline />}
+        {active === "Messages" && <Messages />}
+        {active === "Account" && <Account />}
+        {(active === "Dashboard" || !active) && <Dashboard />}
+      </main>
     </div>
   );
 };

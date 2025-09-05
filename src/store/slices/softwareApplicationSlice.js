@@ -10,7 +10,7 @@ const softwareApplicationSlice = createSlice({
     message: null,
   },
   reducers: {
-    getAllsoftwareApplicationsRequest(state, action) {
+    getAllsoftwareApplicationsRequest(state) {
       state.softwareApplications = [];
       state.error = null;
       state.loading = true;
@@ -21,11 +21,10 @@ const softwareApplicationSlice = createSlice({
       state.loading = false;
     },
     getAllsoftwareApplicationsFailed(state, action) {
-      state.softwareApplications = state.softwareApplications;
       state.error = action.payload;
       state.loading = false;
     },
-    addNewsoftwareApplicationsRequest(state, action) {
+    addNewsoftwareApplicationsRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -40,7 +39,7 @@ const softwareApplicationSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    deletesoftwareApplicationsRequest(state, action) {
+    deletesoftwareApplicationsRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -55,15 +54,13 @@ const softwareApplicationSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetSoftwareApplicationSlice(state, action) {
+    resetSoftwareApplicationSlice(state) {
       state.error = null;
-      state.softwareApplications = state.softwareApplications;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state.softwareApplications = state.softwareApplications;
     },
   },
 });
